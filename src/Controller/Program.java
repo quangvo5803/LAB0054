@@ -49,7 +49,7 @@ public class Program extends Menu<String> {
                     new Contact(contactID, firstName + " " + lastName, group, address, phone, firstName, lastName));
             System.out.println("Add successful");
             System.out.println();
-            if(!Validation.getYesNo("Do you want to continue (Y/N): ").equalsIgnoreCase("Y")){
+            if (!Validation.getYesNo("Do you want to continue (Y/N): ").equalsIgnoreCase("Y")) {
                 System.out.println();
                 return;
             }
@@ -58,15 +58,19 @@ public class Program extends Menu<String> {
 
     public void displayContact() {
         System.out.println("--------------------------------- Display All Contact ----------------------------");
-        System.out.printf("%-5s%-25s%-20s%-20s%-20s%-20s%-20s\n", "Id", "Name",
-                "First name", "Last name", "Group", "Address", "Phone");
-        for (Contact contact : contacts) {
-            System.out.printf("%-5d%-25s%-20s%-20s%-20s%-20s%-20s\n",
-                    contact.getContactID(), contact.getFullName(),
-                    contact.getFirstName(), contact.getLastName(),
-                    contact.getGroup(), contact.getAddress(), contact.getPhone());
+        if (contacts.isEmpty()) {
+            System.out.println("List is empty");
+        } else {
+            System.out.printf("%-5s%-25s%-20s%-20s%-20s%-20s%-20s\n", "Id", "Name",
+                    "First name", "Last name", "Group", "Address", "Phone");
+            for (Contact contact : contacts) {
+                System.out.printf("%-5d%-25s%-20s%-20s%-20s%-20s%-20s\n",
+                        contact.getContactID(), contact.getFullName(),
+                        contact.getFirstName(), contact.getLastName(),
+                        contact.getGroup(), contact.getAddress(), contact.getPhone());
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public void deleteContactByID() {
