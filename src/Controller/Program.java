@@ -39,7 +39,7 @@ public class Program extends Menu<String> {
     public void addContact() {
         while (true) {
             System.out.println();
-            int contactID = contacts.size() + 1;
+            int contactID = Validation.getID(contacts);
             String firstName = Validation.getString("Enter first name: ");
             String lastName = Validation.getString("Enter last name: ");
             String group = Validation.getString("Enter group: ");

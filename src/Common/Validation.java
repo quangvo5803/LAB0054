@@ -1,6 +1,9 @@
 package Common;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Model.Contact;
 
 public class Validation {
     static final Scanner sc = new Scanner(System.in);
@@ -74,19 +77,30 @@ public class Validation {
             String result = getString("Enter phone number: ");
             // check user input phone valid
             if (result.matches(PHONE_VALID1) || result.matches(PHONE_VALID2) ||
-                result.matches(PHONE_VALID3) || result.matches(PHONE_VALID4) ||
-                result.matches(PHONE_VALID5) || result.matches(PHONE_VALID6)) {
+                    result.matches(PHONE_VALID3) || result.matches(PHONE_VALID4) ||
+                    result.matches(PHONE_VALID5) || result.matches(PHONE_VALID6)) {
                 return result;
             } else {
                 System.out.printf("Please input Iphone follow\n"
-               + "•	1234567890\n"
-               + "•	123-456-7890\n"
-               + "•	123-456-7890 x1234\n"
-               + "•	123-456-7890 ext1234\n"
-               + "•	(123)-456-7890\n"
-               + "•	123.456.7890\n"
-               + "•	123 456 7890\n");
+                        + "•	1234567890\n"
+                        + "•	123-456-7890\n"
+                        + "•	123-456-7890 x1234\n"
+                        + "•	123-456-7890 ext1234\n"
+                        + "•	(123)-456-7890\n"
+                        + "•	123.456.7890\n"
+                        + "•	123 456 7890\n");
             }
         }
+    }
+
+    public static int getID(ArrayList<Contact> contacts) {
+        if (contacts.isEmpty()) {
+            return 1;
+        } else {
+            Contact c = contacts.get(contacts.size()-1);
+            int id = c.getContactID() + 1;
+            return id;
+        }
+
     }
 }
